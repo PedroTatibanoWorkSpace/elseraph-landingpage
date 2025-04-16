@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-navy: #0A192F;
+  --color-navy-light: #112240;
+  --color-navy-darker: #0a1528;
+  --color-golden: #FFBF00;
+  --color-turquoise: #40E0D0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--color-navy);
+  overflow-x: hidden;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/images/elseraph-background.png'); 
+  background-size: cover;
+  background-position: center;
+  opacity: 0.08;
+  z-index: -1;
+  will-change: transform;
+}
+
+.glass-effect {
+  background-color: rgba(10, 25, 47, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+@supports (backdrop-filter: blur(12px)) {
+  .glass-effect {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+}
+
+.parallax-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: translateZ(-1px) scale(2);
+  z-index: -1;
+}
+
+@layer components {
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .section-title {
+    @apply text-4xl md:text-5xl font-bold mb-10 bg-gradient-to-r from-golden to-turquoise bg-clip-text text-transparent;
+  }
+  
+  /* Animação otimizada para scroll */
+  .fade-in-animation {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    will-change: opacity, transform;
+  }
+  
+  .fade-in-animation.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
