@@ -44,7 +44,6 @@ export function Features() {
 
   return (
     <section id="features"className="py-24 relative bg-navy">
-      <div className="absolute inset-0 bg-gradient-to-b from-navy to-navy-darker z-0"></div>
       
       <div className="max-w-6xl mx-auto px-4 relative z-10">
         <motion.div
