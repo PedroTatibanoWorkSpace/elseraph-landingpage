@@ -7,17 +7,15 @@ import { AboutUs } from './components/sections/AboutUs';
 import { Footer } from './components/layout/Footer';
 
 function App() {
-  // Função para animar elementos ao scroll com throttling para melhor performance
   useEffect(() => {
     let isThrottled = false;
-    const throttleTime = 100; // ms
+    const throttleTime = 100;
     
     const animateOnScroll = () => {
       if (isThrottled) return;
       
       isThrottled = true;
-      
-      // Usando requestAnimationFrame para sincronizar com repaint do navegador
+
       window.requestAnimationFrame(() => {
         const elements = document.querySelectorAll('.fade-in-animation');
         
@@ -37,7 +35,6 @@ function App() {
     };
     
     window.addEventListener('scroll', animateOnScroll, { passive: true });
-    // Trigger once on load
     animateOnScroll();
     
     return () => window.removeEventListener('scroll', animateOnScroll);
@@ -48,9 +45,9 @@ function App() {
       <Header />
       <main>
         <Hero />
+        <AboutUs />
         <Services />
         <Features />
-        <AboutUs />
       </main>
       <Footer />
     </div>
